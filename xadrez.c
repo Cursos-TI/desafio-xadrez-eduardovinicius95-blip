@@ -1,9 +1,3 @@
-#include <stdio.h>
-
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
@@ -28,7 +22,7 @@ int main() {
     
     printf("--- Movimento do Bispo (%d passos) ---\n", passos_bispo);
     
-    // Vamos usar 'while' para o Bispo
+    // usar 'while' para o Bispo
     int contador_bispo = 0; // Inicia o contador
     
     while (contador_bispo < passos_bispo) { // Condição: "Enquanto o contador for menor que os passos"
@@ -42,7 +36,7 @@ int main() {
     
     printf("\n--- Movimento da Torre (%d passos) ---\n", passos_torre);
     
-    // Vamos usar 'for' para a Torre, que é ótimo para contagens definidas
+    //'for' para a Torre, que é ótimo para contagens definidas
     int i; // Variável de controle do loop
     
     // O loop 'for' faz tudo em uma linha:
@@ -57,7 +51,7 @@ int main() {
     
     printf("\n--- Movimento da Rainha (%d passos) ---\n", passos_rainha);
     
-    // Vamos usar 'do-while' para a Rainha, para praticar a terceira estrutura
+    //'do-while' para a Rainha, para praticar a terceira estrutura
     int contador_rainha = 0; // Inicia o contador
     
     do {
@@ -68,12 +62,39 @@ int main() {
     } while (contador_rainha < passos_rainha); // A condição é verificada no final
 
 
+    // =======================================================
     // Nível Aventureiro - Movimentação do Cavalo
+    // =======================================================
     // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
     // Um loop pode representar a movimentação horizontal e outro vertical.
+    // REQUISITO: Mover 2 "Baixo" e 1 "Esquerda", usando um 'for' e um 'while' aninhados.
     
-    // (Vamos fazer este depois)
-    printf("\n--- Nível Aventureiro (A implementar) ---\n");
+    printf("\n--- Nível Aventureiro (Movimento do Cavalo) ---\n");
+
+    // Definindo as variáveis pedidas no requisito
+    int passos_vertical = 2;
+    int passos_horizontal = 1;
+    
+    int v; // Variável de controle do loop 'for' (vertical)
+    int h = 0; // Variável de controle do loop 'while' (horizontal)
+    
+    // 1. Loop 'for' (Obrigatório) para os passos verticais
+    // Usei v=1; v <= passos_vertical para a contagem ficar mais natural (passo 1, passo 2)
+    for (v = 1; v <= passos_vertical; v++) {
+        
+        printf("Baixo\n"); // Executa o movimento vertical
+        
+        // 2. Loop aninhado (Obrigatório, 'while')
+        // Quando o loop 'for' chegar no seu ÚLTIMO passo (v == 2),
+        // ele executa o loop interno para fazer o movimento horizontal.
+        if (v == passos_vertical) {
+            
+            while (h < passos_horizontal) {
+                printf("Esquerda\n"); // Executa o movimento horizontal
+                h++; // Incrementa o contador do loop 'while'
+            }
+        }
+    }
 
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
