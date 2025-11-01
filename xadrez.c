@@ -1,111 +1,173 @@
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+// Desafio de Xadrez
+// Este código implementa os Níveis Novato, Aventureiro e Mestre.
+// O objetivo é utilizar estruturas de repetição e funções 
+// (incluindo recursão e loops complexos) para simular
+// os movimentos das peças.
 
 #include <stdio.h> // Biblioteca para funções de entrada e saída
 
-int main() {
-    
-    printf("--- Desafio MateCheck - NÍVEL NOVATO ---\n\n");
+/*
+ * =======================================================
+ * NÍVEL MESTRE: FUNÇÕES RECURSIVAS
+ * =======================================================
+ * Estas funções substituem os loops simples do Nível Novato.
+ */
 
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+/**
+ * @brief (Recursiva) Simula o movimento do Bispo.
+ * A função se chama até que 'passos' chegue a 0.
+ * @param passos O número de passos restantes.
+ */
+void moverBispoRecursivo(int passos) {
+    // Caso Base (Condição de Parada): Se não há mais passos, pare.
+    if (passos <= 0) {
+        return; 
+    }
     
+    // Ação: Imprime o movimento
+    printf("Cima, Direita\n");
+    
+    // Chamada Recursiva: Chama a si mesma, mas com um passo a menos.
+    moverBispoRecursivo(passos - 1);
+}
+
+/**
+ * @brief (Recursiva) Simula o movimento da Torre.
+ * @param passos O número de passos restantes.
+ */
+void moverTorreRecursivo(int passos) {
+    // Caso Base
+    if (passos <= 0) {
+        return;
+    }
+    // Ação e Chamada Recursiva
+    printf("Direita\n");
+    moverTorreRecursivo(passos - 1);
+}
+
+/**
+ * @brief (Recursiva) Simula o movimento da Rainha.
+ * @param passos O número de passos restantes.
+ */
+void moverRainhaRecursivo(int passos) {
+    // Caso Base
+    if (passos <= 0) {
+        return;
+    }
+    // Ação e Chamada Recursiva
+    printf("Esquerda\n");
+    moverRainhaRecursivo(passos - 1);
+}
+
+
+/*
+ * =======================================================
+ * FUNÇÃO PRINCIPAL
+ * =======================================================
+ */
+
+int main() { // <-- A função 'main' começa aqui
+    
+    // --- Nível Novato (Substituído por Recursão) ---
+    // A lógica original de while/for/do-while foi
+    // substituída pelas chamadas de função do Nível Mestre.
+    
+    printf("--- Desafio MateCheck - NÍVEL MESTRE ---\n\n");
+
     // Variáveis que definem quantos passos cada peça dará
     int passos_bispo = 5;
     int passos_torre = 5;
     int passos_rainha = 8;
 
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-    
-    printf("--- Movimento do Bispo (%d passos) ---\n", passos_bispo);
-    
-    // usar 'while' para o Bispo
-    int contador_bispo = 0; // Inicia o contador
-    
-    while (contador_bispo < passos_bispo) { // Condição: "Enquanto o contador for menor que os passos"
-        printf("Cima, Direita\n");
-        contador_bispo++; // Incrementa o contador para o loop não ser infinito
-    }
+    // Implementação de Movimentação do Bispo (Recursivo)
+    // REQUISITO MESTRE: Substituído por função recursiva.
+    printf("--- Movimento do Bispo (%d passos) [Recursivo] ---\n", passos_bispo);
+    moverBispoRecursivo(passos_bispo);
 
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-    
-    printf("\n--- Movimento da Torre (%d passos) ---\n", passos_torre);
-    
-    //'for' para a Torre, que é ótimo para contagens definidas
-    int i; // Variável de controle do loop
-    
-    // O loop 'for' faz tudo em uma linha:
-    // 1. Inicia (i=0); 2. Testa a condição (i < passos_torre); 3. Incrementa (i++)
-    for (i = 0; i < passos_torre; i++) {
-        printf("Direita\n");
-    }
+    // Implementação de Movimentação da Torre (Recursivo)
+    // REQUISITO MESTRE: Substituído por função recursiva.
+    printf("\n--- Movimento da Torre (%d passos) [Recursivo] ---\n", passos_torre);
+    moverTorreRecursivo(passos_torre);
 
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-    
-    printf("\n--- Movimento da Rainha (%d passos) ---\n", passos_rainha);
-    
-    //'do-while' para a Rainha, para praticar a terceira estrutura
-    int contador_rainha = 0; // Inicia o contador
-    
-    do {
-        // O 'do' (fazer) garante que o bloco execute pelo menos UMA vez
-        printf("Esquerda\n");
-        contador_rainha++; // Incrementa o contador
-
-    } while (contador_rainha < passos_rainha); // A condição é verificada no final
+    // Implementação de Movimentação da Rainha (Recursivo)
+    // REQUISITO MESTRE: Substituído por função recursiva.
+    printf("\n--- Movimento da Rainha (%d passos) [Recursivo] ---\n", passos_rainha);
+    moverRainhaRecursivo(passos_rainha); // <-- Seu erro estava aqui. O CÓDIGO CONTINUA ABAIXO.
 
 
-    // =======================================================
-    // Nível Aventureiro - Movimentação do Cavalo
-    // =======================================================
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-    // REQUISITO: Mover 2 "Baixo" e 1 "Esquerda", usando um 'for' e um 'while' aninhados.
+    // --- Nível Aventureiro (Substituído por Loops Complexos) ---
+    // REQUISITO MESTRE: Aprimorado para "Cima, Cima, Direita"
+    // e usando loops complexos com 'continue' e 'break'.
     
-    printf("\n--- Nível Aventureiro (Movimento do Cavalo) ---\n");
+    printf("\n--- Nível Mestre (Movimento do Cavalo) ---\n");
 
-    // Definindo as variáveis pedidas no requisito
+    // Definindo as variáveis para o movimento em "L"
     int passos_vertical = 2;
     int passos_horizontal = 1;
     
     int v; // Variável de controle do loop 'for' (vertical)
     int h = 0; // Variável de controle do loop 'while' (horizontal)
     
-    // 1. Loop 'for' (Obrigatório) para os passos verticais
-    // Usei v=1; v <= passos_vertical para a contagem ficar mais natural (passo 1, passo 2)
+    // 1. Loop 'for' para os 2 passos verticais
     for (v = 1; v <= passos_vertical; v++) {
         
-        printf("Baixo\n"); // Executa o movimento vertical
+        printf("Cima\n"); // Executa o movimento vertical
         
-        // 2. Loop aninhado (Obrigatório, 'while')
-        // Quando o loop 'for' chegar no seu ÚLTIMO passo (v == 2),
-        // ele executa o loop interno para fazer o movimento horizontal.
-        if (v == passos_vertical) {
+        // REQUISITO MESTRE: Uso do 'continue'
+        // Se NÃO for o último passo vertical (ou seja, se v for 1),
+        // pule o resto do loop e vá para a próxima iteração do 'for'.
+        if (v != passos_vertical) {
+            continue; 
+        }
+        
+        // 2. Loop aninhado 'while' (só executa quando v == 2)
+        // Este bloco só é alcançado no último passo do 'for'.
+        while (h < passos_horizontal) {
+            printf("Direita\n"); // Executa o movimento horizontal
+            h++; 
             
-            while (h < passos_horizontal) {
-                printf("Esquerda\n"); // Executa o movimento horizontal
-                h++; // Incrementa o contador do loop 'while'
-            }
+            // REQUISITO MESTRE: Uso do 'break'
+            // Demonstra como sair do loop 'while' assim que a condição for
+            // satisfeita, sem precisar esperar a próxima verificação.
+            break; 
         }
     }
 
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    // --- Nível Mestre (Implementações Adicionais) ---
+    
+    // REQUISITO MESTRE: Bispo com Loops Aninhados
+    // "utilizando o loop mais externo para o movimento vertical, 
+    // e o mais interno para o movimento horizontal."
+    
+    printf("\n--- Nível Mestre (Bispo com Loops Aninhados) ---\n");
+    
+    int v_bispo; // Loop externo (vertical)
+    int h_bispo; // Loop interno (horizontal)
+    
+    // O loop externo controla os 5 passos na vertical
+    for (v_bispo = 0; v_bispo < passos_bispo; v_bispo++) {
+        
+        // O loop interno controla os 5 passos na horizontal
+        for (h_bispo = 0; h_bispo < passos_bispo; h_bispo++) {
+            
+            // A diagonal verdadeira ocorre quando o passo vertical
+            // é igual ao passo horizontal (ex: [0,0], [1,1], [2,2]).
+            if (v_bispo == h_bispo) {
+                // Imprime o movimento e sai do loop *interno*.
+                // Não precisamos continuar o loop 'h_bispo'
+                // depois que achamos a posição diagonal.
+                printf("Cima, Direita\n");
+                break; // Sai do loop 'for' interno (h_bispo)
+            }
+        }
+    }
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-    // (Vamos fazer este depois)
-    printf("\n--- Nível Mestre (A implementar) ---\n");
+    printf("\n--- Desafio Mestre Concluído ---\n");
 
     return 0; // Indica que o programa terminou com sucesso
-}
+
+} 
